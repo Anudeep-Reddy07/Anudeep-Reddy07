@@ -31,7 +31,7 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/activity-assets/activity-365d.svg?v=95e915a1" alt="GitHub contribution activity over the last year" width="100%">
+<img src="./assets/activity-365d.svg" alt="GitHub contribution activity over the last year" width="100%">
 
 </div>
 
