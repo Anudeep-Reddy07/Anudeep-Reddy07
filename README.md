@@ -31,11 +31,7 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Anudeep-Reddy07&amp;theme=github_dark&amp;name=Daily%20Activity&amp;bg_color=0D1117&amp;border_color=30363D&amp;title_color=58A6FF&amp;text_color=8B949E&amp;chart_color=238636">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Anudeep-Reddy07&amp;theme=github&amp;name=Daily%20Activity&amp;bg_color=FFFFFF&amp;border_color=D0D7DE&amp;title_color=0969DA&amp;text_color=57606A&amp;chart_color=2DA44E">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Anudeep-Reddy07&amp;theme=github_dark&amp;name=Daily%20Activity&amp;bg_color=0D1117&amp;border_color=30363D&amp;title_color=58A6FF&amp;text_color=8B949E&amp;chart_color=238636" alt="GitHub daily activity graph" width="100%">
-</picture>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Anudeep-Reddy07&amp;theme=github-compact&amp;area=true&amp;area_color=238636&amp;line=58A6FF&amp;point=2EA043&amp;bg_color=0D1117&amp;color=8B949E&amp;hide_border=true&amp;hide_title=true&amp;days=90&amp;radius=10&amp;height=280" alt="GitHub activity graph" width="100%">
 
 </div>
 
