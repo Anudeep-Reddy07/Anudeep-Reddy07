@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390">
+<defs>
+  <linearGradient id="g" x1="0" x2="1">
+    <stop offset="0" stop-color="#7c3aed"/><stop offset="0.5" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/>
+  </linearGradient>
+  <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+    <path d="M36 0H0V36" fill="none" stroke="#ffffff" stroke-opacity=".06"/>
+  </pattern>
+</defs>
+<rect width="1200" height="390" rx="28" fill="#0b1020"/>
+<rect width="1200" height="390" rx="28" fill="url(#grid)"/>
+<circle cx="1040" cy="55" r="180" fill="#7c3aed" opacity=".10"/>
+<circle cx="1120" cy="300" r="210" fill="#06b6d4" opacity=".08"/>
+<rect x="54" y="54" width="7" height="282" rx="4" fill="url(#g)"/>
+<text x="92" y="112" fill="#94a3b8" font-family="monospace" font-size="20" letter-spacing="5">ANUDEEP REDDY</text>
+<text x="92" y="174" fill="#f8fafc" font-family="Arial, sans-serif" font-size="52" font-weight="700">CSE (AI &amp; ML)</text>
+<text x="92" y="214" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="24">Developer · Builder · Problem Solver</text>
+<text x="92" y="270" fill="#94a3b8" font-family="monospace" font-size="18">PYTHON  /  AI-ML  /  COMPUTER VISION  /  SYSTEMS</text>
+<line x1="92" y1="302" x2="650" y2="302" stroke="url(#g)" stroke-width="2"/>
+<text x="92" y="334" fill="#64748b" font-family="monospace" font-size="16">BUILD → BREAK → UNDERSTAND → IMPROVE</text>
+<circle cx="1070" cy="194" r="70" fill="none" stroke="#334155" stroke-width="2"/>
+<circle cx="1070" cy="194" r="45" fill="none" stroke="#475569" stroke-width="2"/>
+<circle cx="1070" cy="194" r="7" fill="#22d3ee"/>
+<path d="M1070 124V146M1070 242V264M1000 194H1022M1118 194H1140" stroke="#64748b" stroke-width="2"/>
+</svg>
