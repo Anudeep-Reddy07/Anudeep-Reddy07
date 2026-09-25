@@ -27,7 +27,25 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 > **Build → break → understand → improve.**
 
+---## 🟣 CONTRIBUTION MAP
+
+<div align="center">
+
+<img src="https://ghchart.rshah.org/7C3AED/Anudeep-Reddy07" alt="GitHub contribution heatmap" width="100%">
+
+<br><br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/github-snake.svg">
+  <img src="./assets/github-snake.svg" alt="GitHub contribution snake animation" width="100%">
+</picture>
+
+</div>
+
 ---
+
+
 
 ## `02` / CURRENTLY BUILDING
 
@@ -117,6 +135,85 @@ Multi-role placement management application for students, companies and administ
 `Flask` `Jinja2` `SQLite` `Bootstrap`
 
 <a href="https://github.com/Anudeep-Reddy07/Placement-portal-application">↗ repository</a>
+
+</td>
+</tr>
+</table>
+
+---
+
+## ⭐ FEATURED PROJECTS
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🕳️ Pothole Detection
+
+Computer vision project for detecting potholes from road imagery using a YOLO-based pipeline.
+
+**Tech:** Python · YOLO · Ultralytics · OpenCV · Roboflow
+
+<a href="https://github.com/Anudeep-Reddy07/Pothole-Detection-Project">View Repository →</a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🚨 AI Emergency Decision Support
+
+AI-oriented project focused on structuring information and support for emergency-response scenarios.
+
+**Tech:** Python · AI/ML · Computer Vision
+
+<a href="https://github.com/Anudeep-Reddy07/AI-Emergency-Decision-Support-System">View Repository →</a>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🌱 Bloom — Local Prices
+
+Web application built around local product and price information.
+
+**Tech:** React · Tailwind CSS · Supabase
+
+<a href="https://github.com/Anudeep-Reddy07/bloom-local-prices">View Repository →</a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🥾 Trekking Management
+
+Management platform with authentication, role-based workflows, bookings, caching and background tasks.
+
+**Tech:** Flask · Vue · SQLite · Redis · Celery
+
+<a href="https://github.com/Anudeep-Reddy07/trekking-management-application">View Repository →</a>
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🏢 Placement Portal
+
+Multi-role placement management application for students, companies and administrators.
+
+**Tech:** Flask · Jinja2 · SQLite · Bootstrap
+
+<a href="https://github.com/Anudeep-Reddy07/Placement-portal-application">View Repository →</a>
+
+</td>
+<td width="50%" valign="top">
+
+### 🏠 House Price Prediction
+
+Machine-learning project focused on predicting house prices from structured data.
+
+**Tech:** Python · Machine Learning · Data Analysis
+
+<a href="https://github.com/Anudeep-Reddy07/HousePricePrediction">View Repository →</a>
 
 </td>
 </tr>
@@ -216,15 +313,10 @@ Git
 
 <div align="center">
 
-<a href="https://github.com/Anudeep-Reddy07/LeetCode-solved-problems">
-  <img src="https://img.shields.io/badge/DSA-in%20progress-7C3AED?style=flat-square">
-</a>
-
-</div>
 
 ---
 
-## `06` / GITHUB SIGNAL
+## 📊 GITHUB ACTIVITY
 
 <div align="center">
 
@@ -232,11 +324,7 @@ Git
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Anudeep-Reddy07&layout=compact&hide_border=true&theme=transparent&langs_count=8" height="170" alt="Top languages">
 
-</div>
-
-<br>
-
-<div align="center">
+<br><br>
 
 <img src="https://streak-stats.demolab.com?user=Anudeep-Reddy07&hide_border=true&theme=transparent" height="170" alt="GitHub contribution streak">
 
@@ -244,12 +332,16 @@ Git
 
 ---
 
-## `07` / CONTRIBUTION MAP
+## 🟣 CONTRIBUTION MAP
 
 <div align="center">
 
+<img src="https://ghchart.rshah.org/7C3AED/Anudeep-Reddy07" alt="GitHub contribution heatmap" width="100%">
+
+<br><br>
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-snake.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-snake-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/github-snake.svg">
   <img src="./assets/github-snake.svg" alt="GitHub contribution snake animation" width="100%">
 </picture>
@@ -257,7 +349,6 @@ Git
 </div>
 
 ---
-
 ## `08` / EDUCATION
 
 <table>
@@ -287,7 +378,7 @@ Foundation completed · Currently at Diploma level
 
 ---
 
-## `09` / CERTIFICATIONS
+## 📜 CERTIFICATIONS
 
 - **Machine Learning Specialization** — DeepLearning.AI
 - **PyTorch for Deep Learning**
@@ -295,36 +386,9 @@ Foundation completed · Currently at Diploma level
 
 ---
 
-## `10` / WHAT I'M EXPLORING
-
-```text
-Machine Learning
-      │
-      ├── Deep Learning
-      │      └── Computer Vision
-      │
-      ├── Data Science
-      │
-      └── Practical AI systems
-
-Software Engineering
-      │
-      ├── Backend systems
-      ├── APIs & databases
-      ├── Distributed/background tasks
-      └── Better system design
-
-Problem Solving
-      │
-      ├── Data Structures & Algorithms
-      └── Competitive Programming
-```
-
----
-
 <div align="center">
 
-### `LET'S BUILD SOMETHING USEFUL.`
+### 🚀 LEARNING. BUILDING. ITERATING.
 
 <a href="https://github.com/Anudeep-Reddy07">GitHub</a>
 &nbsp;&nbsp;·&nbsp;&nbsp;
