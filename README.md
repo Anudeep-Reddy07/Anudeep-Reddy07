@@ -31,11 +31,13 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://ghchart.rshah.org/Anudeep-Reddy07" alt="GitHub contribution heatmap" width="100%">
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Anudeep-Reddy07&theme=github_dark" alt="GitHub contribution heatmap and activity" width="100%">
 
 </div>
 
 ---
+
+
 
 ## ⭐ FEATURED PROJECTS
 
@@ -164,17 +166,64 @@ Machine-learning project focused on predicting house prices from structured data
 
 ---
 
-## 💻 LANGUAGES
+## 🛠️ TECH STACK
 
-<div align="center">
+<table>
+<tr>
+<td width="25%" valign="top">
 
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-<img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black">
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
+### 🧠 AI & ML
 
-</div>
+- Python
+- PyTorch
+- YOLO / Ultralytics
+- OpenCV
+- Machine Learning
+
+</td>
+<td width="25%" valign="top">
+
+### 💻 Development
+
+- C
+- Java
+- Flask
+- React
+- Vue
+- TypeScript
+- Tailwind CSS
+
+</td>
+<td width="25%" valign="top">
+
+### ⚙️ Backend & Systems
+
+- REST APIs
+- JWT Authentication
+- Redis
+- Celery
+- GitHub Actions
+- Docker
+
+</td>
+<td width="25%" valign="top">
+
+### 🗄️ Data & Platforms
+
+- SQLite
+- PostgreSQL
+- Supabase
+- SQLAlchemy
+- Git & GitHub
+- Netlify
+
+</td>
+</tr>
+</table>
 
 ---
+
+
 
 <div align="center">
 
