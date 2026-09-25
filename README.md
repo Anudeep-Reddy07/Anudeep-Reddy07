@@ -19,126 +19,21 @@
 
 <br>
 
-## `01` / ABOUT
+'m a **CSE (AI & ML) student** who likes building things that move beyond a classroom demo.
 
-I'm a **CSE (AI & ML) student** who likes building things that move beyond a classroom demo.
-
-My work sits around **Python, machine learning, computer vision, backend systems and problem solving**. I enjoy taking an idea from a rough prototype to something that actually works — whether that means training a detector, designing an API, building a role-based application, or experimenting with unconventional communication systems.
+My work sits around **Python, machine learning, computer vision, backend systems and problem solving**. I enjoy taking an idea from a rough prototype to something that actually works.
 
 > **Build → break → understand → improve.**
 
----## 🟣 CONTRIBUTION MAP
+---
+
+## 📈 DAILY ACTIVITY
 
 <div align="center">
 
-<img src="https://ghchart.rshah.org/7C3AED/Anudeep-Reddy07" alt="GitHub contribution heatmap" width="100%">
-
-<br><br>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/github-snake.svg">
-  <img src="./assets/github-snake.svg" alt="GitHub contribution snake animation" width="100%">
-</picture>
+<img src="https://ghchart.rshah.org/7C3AED/Anudeep-Reddy07" alt="GitHub daily contribution heatmap" width="100%">
 
 </div>
-
----
-
-
-
-## `02` / CURRENTLY BUILDING
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 📡 PhotonTransfer
-
-**Optical file transfer between phones**
-
-A network-independent file transfer experiment where data is encoded into visual frames and reconstructed through a screen-to-camera pipeline.
-
-`Python` `OpenCV` `Computer Vision`
-
-</td>
-<td width="50%" valign="top">
-
-### 🥾 Trekking Management
-
-**Full-stack management platform**
-
-Role-based trekking management with authentication, booking workflows, Redis caching, Celery background jobs and separate Admin / Staff / User flows.
-
-`Flask` `Vue` `SQLite` `Redis` `Celery`
-
-</td>
-</tr>
-</table>
-
----
-
-## `03` / SELECTED WORK
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🕳️ Pothole Detection
-
-YOLO-based computer vision system for detecting potholes from road imagery.
-
-**Stack**
-
-`Python` `YOLO` `Ultralytics` `OpenCV` `Roboflow`
-
-<a href="https://github.com/Anudeep-Reddy07/Pothole-Detection-Project">↗ repository</a>
-
-</td>
-<td width="50%" valign="top">
-
-### 🚨 AI Emergency Decision Support
-
-An AI-oriented emergency decision-support project focused on helping structure information for emergency scenarios.
-
-**Stack**
-
-`Python` `AI/ML` `Computer Vision`
-
-<a href="https://github.com/Anudeep-Reddy07/AI-Emergency-Decision-Support-System">↗ repository</a>
-
-</td>
-</tr>
-
-<tr>
-<td width="50%" valign="top">
-
-### 🌱 Market Bloom
-
-A modern web application built around local product/price information.
-
-**Stack**
-
-`React` `Tailwind CSS` `Supabase`
-
-<a href="https://github.com/Anudeep-Reddy07/bloom-local-prices">↗ repository</a>
-
-</td>
-<td width="50%" valign="top">
-
-### 🏢 Placement Portal
-
-Multi-role placement management application for students, companies and administrators.
-
-**Stack**
-
-`Flask` `Jinja2` `SQLite` `Bootstrap`
-
-<a href="https://github.com/Anudeep-Reddy07/Placement-portal-application">↗ repository</a>
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -150,9 +45,13 @@ Multi-role placement management application for students, companies and administ
 
 ### 🕳️ Pothole Detection
 
-Computer vision project for detecting potholes from road imagery using a YOLO-based pipeline.
+<p>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/YOLO-111827?style=for-the-badge">
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white">
+</p>
 
-**Tech:** Python · YOLO · Ultralytics · OpenCV · Roboflow
+YOLO-based computer vision project for detecting potholes from road imagery.
 
 <a href="https://github.com/Anudeep-Reddy07/Pothole-Detection-Project">View Repository →</a>
 
@@ -161,22 +60,31 @@ Computer vision project for detecting potholes from road imagery using a YOLO-ba
 
 ### 🚨 AI Emergency Decision Support
 
-AI-oriented project focused on structuring information and support for emergency-response scenarios.
+<p>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/AI%2FML-7C3AED?style=for-the-badge">
+<img src="https://img.shields.io/badge/Computer%20Vision-06B6D4?style=for-the-badge">
+</p>
 
-**Tech:** Python · AI/ML · Computer Vision
+AI-oriented emergency decision-support project.
 
 <a href="https://github.com/Anudeep-Reddy07/AI-Emergency-Decision-Support-System">View Repository →</a>
 
 </td>
 </tr>
+
 <tr>
 <td width="50%" valign="top">
 
 ### 🌱 Bloom — Local Prices
 
-Web application built around local product and price information.
+<p>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=111827">
+<img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=111827">
+</p>
 
-**Tech:** React · Tailwind CSS · Supabase
+Web application built around local product and price information.
 
 <a href="https://github.com/Anudeep-Reddy07/bloom-local-prices">View Repository →</a>
 
@@ -185,22 +93,33 @@ Web application built around local product and price information.
 
 ### 🥾 Trekking Management
 
-Management platform with authentication, role-based workflows, bookings, caching and background tasks.
+<p>
+<img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white">
+<img src="https://img.shields.io/badge/Vue-42B883?style=for-the-badge&logo=vuedotjs&logoColor=white">
+<img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
+</p>
 
-**Tech:** Flask · Vue · SQLite · Redis · Celery
+Role-based trekking management platform with authentication, bookings, caching and background tasks.
 
 <a href="https://github.com/Anudeep-Reddy07/trekking-management-application">View Repository →</a>
 
 </td>
 </tr>
+
 <tr>
 <td width="50%" valign="top">
 
 ### 🏢 Placement Portal
 
-Multi-role placement management application for students, companies and administrators.
+<p>
+<img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white">
+<img src="https://img.shields.io/badge/Jinja2-B41717?style=for-the-badge">
+<img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+</p>
 
-**Tech:** Flask · Jinja2 · SQLite · Bootstrap
+Multi-role placement management application for students, companies and administrators.
 
 <a href="https://github.com/Anudeep-Reddy07/Placement-portal-application">View Repository →</a>
 
@@ -209,9 +128,13 @@ Multi-role placement management application for students, companies and administ
 
 ### 🏠 House Price Prediction
 
-Machine-learning project focused on predicting house prices from structured data.
+<p>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/ML-7C3AED?style=for-the-badge">
+<img src="https://img.shields.io/badge/Data%20Analysis-F97316?style=for-the-badge">
+</p>
 
-**Tech:** Python · Machine Learning · Data Analysis
+Machine-learning project focused on predicting house prices from structured data.
 
 <a href="https://github.com/Anudeep-Reddy07/HousePricePrediction">View Repository →</a>
 
@@ -221,7 +144,7 @@ Machine-learning project focused on predicting house prices from structured data
 
 ---
 
-## `04` / THE TOOLBOX
+## 🛠️ TOOLBOX
 
 <div align="center">
 
@@ -279,7 +202,11 @@ Git
 
 ---
 
-## `05` / PROBLEM SOLVING
+
+
+---
+
+## 🧩 PROBLEM SOLVING
 
 <div align="center">
 
@@ -311,45 +238,14 @@ Git
 
 </div>
 
-<div align="center">
+
+---
+
 
 
 ---
 
-## 📊 GITHUB ACTIVITY
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=Anudeep-Reddy07&show_icons=true&hide_border=true&rank_icon=github&theme=transparent&include_all_commits=true" height="170" alt="GitHub statistics">
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Anudeep-Reddy07&layout=compact&hide_border=true&theme=transparent&langs_count=8" height="170" alt="Top languages">
-
-<br><br>
-
-<img src="https://streak-stats.demolab.com?user=Anudeep-Reddy07&hide_border=true&theme=transparent" height="170" alt="GitHub contribution streak">
-
-</div>
-
----
-
-## 🟣 CONTRIBUTION MAP
-
-<div align="center">
-
-<img src="https://ghchart.rshah.org/7C3AED/Anudeep-Reddy07" alt="GitHub contribution heatmap" width="100%">
-
-<br><br>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/github-snake.svg">
-  <img src="./assets/github-snake.svg" alt="GitHub contribution snake animation" width="100%">
-</picture>
-
-</div>
-
----
-## `08` / EDUCATION
+## 🎓 EDUCATION
 
 <table>
 <tr>
@@ -378,6 +274,10 @@ Foundation completed · Currently at Diploma level
 
 ---
 
+
+
+---
+
 ## 📜 CERTIFICATIONS
 
 - **Machine Learning Specialization** — DeepLearning.AI
@@ -385,7 +285,6 @@ Foundation completed · Currently at Diploma level
 - **Cisco Cybersecurity Badge**
 
 ---
-
 <div align="center">
 
 ### 🚀 LEARNING. BUILDING. ITERATING.
