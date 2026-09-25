@@ -19,7 +19,7 @@
 
 <br>
 
-'m a **CSE (AI & ML) student** who likes building things that move beyond a classroom demo.
+I'm a **CSE (AI & ML) student** who likes building things that move beyond a classroom demo.
 
 My work sits around **Python, machine learning, computer vision, backend systems and problem solving**. I enjoy taking an idea from a rough prototype to something that actually works.
 
@@ -31,7 +31,7 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://ghchart.rshah.org/Anudeep-Reddy07" alt="GitHub daily contribution heatmap" width="100%">
+<img src="https://ghchart.rshah.org/Anudeep-Reddy07" alt="GitHub contribution heatmap" width="100%">
 
 </div>
 
@@ -141,6 +141,22 @@ Machine-learning project focused on predicting house prices from structured data
 </td>
 </tr>
 </table>
+
+---
+
+## 📊 GITHUB STATS
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=Anudeep-Reddy07&show_icons=true&hide_border=true&rank_icon=github&theme=transparent&include_all_commits=true" height="170" alt="GitHub statistics">
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Anudeep-Reddy07&layout=compact&hide_border=true&theme=transparent&langs_count=6" height="170" alt="Top languages">
+
+<br><br>
+
+<img src="https://streak-stats.demolab.com?user=Anudeep-Reddy07&hide_border=true&theme=transparent" height="170" alt="GitHub contribution streak">
+
+</div>
 
 ---
 
