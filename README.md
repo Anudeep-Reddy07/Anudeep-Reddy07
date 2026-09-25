@@ -31,7 +31,7 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Anudeep-Reddy07&amp;theme=github-compact&amp;area=true&amp;area_color=238636&amp;line=58A6FF&amp;point=2EA043&amp;bg_color=0D1117&amp;color=8B949E&amp;hide_border=true&amp;hide_title=true&amp;days=90&amp;radius=10&amp;height=280" alt="GitHub activity graph" width="100%">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Anudeep-Reddy07&custom_title=Daily%20Activity&theme=github-compact&bg_color=0D1117&color=8B949E&line=58A6FF&point=2EA043&area=true&area_color=238636&hide_border=true&radius=10&height=280&days=90" alt="GitHub daily activity graph" width="100%">
 
 </div>
 
