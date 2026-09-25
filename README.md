@@ -31,7 +31,7 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://ghchart.rshah.org/7C3AED/Anudeep-Reddy07" alt="GitHub daily contribution heatmap" width="100%">
+<img src="https://ghchart.rshah.org/Anudeep-Reddy07" alt="GitHub daily contribution heatmap" width="100%">
 
 </div>
 
@@ -144,147 +144,18 @@ Machine-learning project focused on predicting house prices from structured data
 
 ---
 
-## 🛠️ TOOLBOX
+## 💻 LANGUAGES
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=python,c,java,pytorch,opencv,flask,react,vue,ts,tailwind,sqlite,postgres,redis,git,github,docker&perline=8" alt="Technology stack">
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black">
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
 
 </div>
 
-<br>
-
-<table>
-<tr>
-<td width="25%" valign="top">
-
-**LANGUAGES**
-
-Python  
-C  
-Java
-
-</td>
-<td width="25%" valign="top">
-
-**AI / ML**
-
-PyTorch  
-YOLO  
-OpenCV  
-Machine Learning
-
-</td>
-<td width="25%" valign="top">
-
-**APPLICATIONS**
-
-Flask  
-Vue  
-React  
-TypeScript
-
-</td>
-<td width="25%" valign="top">
-
-**DATA / INFRA**
-
-SQLite  
-PostgreSQL  
-Supabase  
-Redis  
-Celery  
-Git
-
-</td>
-</tr>
-</table>
-
 ---
 
-
-
----
-
-## 🧩 PROBLEM SOLVING
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="33%">
-
-### 300+
-
-**LeetCode**
-
-</td>
-<td align="center" width="33%">
-
-### 200+
-
-**Codeforces**
-
-</td>
-<td align="center" width="33%">
-
-### 100+
-
-**HackerRank**
-
-</td>
-</tr>
-</table>
-
-</div>
-
-
----
-
-
-
----
-
-## 🎓 EDUCATION
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### CMR College of Engineering & Technology
-
-**B.Tech — Computer Science & Engineering (AI & ML)**
-
-`2024 — 2028`
-
-**CGPA: 9.25**
-
-</td>
-<td width="50%" valign="top">
-
-### IIT Madras
-
-**BSc Data Science & Applications**
-
-Foundation completed · Currently at Diploma level
-
-</td>
-</tr>
-</table>
-
----
-
-
-
----
-
-## 📜 CERTIFICATIONS
-
-- **Machine Learning Specialization** — DeepLearning.AI
-- **PyTorch for Deep Learning**
-- **Cisco Cybersecurity Badge**
-
----
 <div align="center">
 
 ### 🚀 LEARNING. BUILDING. ITERATING.
