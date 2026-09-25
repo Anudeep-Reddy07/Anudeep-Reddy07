@@ -31,7 +31,11 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Anudeep-Reddy07&theme=github_dark" alt="GitHub contribution heatmap and activity" width="100%">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://ghchart.xqsit94.in/dark:default/Anudeep-Reddy07">
+  <source media="(prefers-color-scheme: light)" srcset="https://ghchart.xqsit94.in/light:default/Anudeep-Reddy07">
+  <img src="https://ghchart.xqsit94.in/dark:default/Anudeep-Reddy07" alt="GitHub contribution calendar" width="100%">
+</picture>
 
 </div>
 
