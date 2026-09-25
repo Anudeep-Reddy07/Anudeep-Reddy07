@@ -148,11 +148,15 @@ Machine-learning project focused on predicting house prices from structured data
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Anudeep-Reddy07&show_icons=true&hide_border=true&rank_icon=github&theme=transparent&include_all_commits=true" height="170" alt="GitHub statistics">
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Anudeep-Reddy07&theme=github_dark" height="180" alt="GitHub statistics">
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Anudeep-Reddy07&layout=compact&hide_border=true&theme=transparent&langs_count=6" height="170" alt="Top languages">
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Anudeep-Reddy07&theme=github_dark" height="180" alt="Top languages">
 
-<br><br>
+</div>
+
+<br>
+
+<div align="center">
 
 <img src="https://streak-stats.demolab.com?user=Anudeep-Reddy07&hide_border=true&theme=transparent" height="170" alt="GitHub contribution streak">
 
