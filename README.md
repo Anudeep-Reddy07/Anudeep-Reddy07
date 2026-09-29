@@ -160,7 +160,7 @@ Machine-learning project focused on predicting house prices from structured data
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/activity-assets/streak.svg" height="170" alt="GitHub contribution streak">
+<img src="https://streak-stats.demolab.com?user=Anudeep-Reddy07&hide_border=true&theme=transparent" height="170" alt="GitHub contribution streak">
 
 </div>
 
