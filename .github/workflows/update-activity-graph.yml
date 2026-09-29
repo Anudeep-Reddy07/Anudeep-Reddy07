@@ -186,7 +186,7 @@ jobs:
       - name: Generate streak card
         uses: zients/github-readme-streak-stats@v2
         with:
-          options: user=${{ github.repository_owner }}&theme=dark&hide_border=true&background=0d1117&border=30363d&ring=39d353&fire=39d353&currStreakNum=f0f6fc&sideNums=f0f6fc&currStreakLabel=8b949e&sideLabels=8b949e&dates=8b949e&disable_animations=true&card_width=760&card_height=190&date_format=j M Y
+          options: user=${{ github.repository_owner }}&theme=dark&hide_border=true&background=0d1117&border=30363d&ring=39d353&fire=39d353&currStreakNum=f0f6fc&sideNums=f0f6fc&currStreakLabel=8b949e&sideLabels=8b949e&dates=8b949e&disable_animations=true&card_width=760&card_height=190&date_format=j M Y&timezone=Asia/Kolkata
           path: activity-dist/streak.svg
           token: ${{ github.token }}
 
