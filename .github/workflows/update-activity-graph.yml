@@ -72,8 +72,10 @@ jobs:
               key=(dt.year,dt.month)
               x=L+i*slot
               if key!=prev:
-                  out.append(f'<line x1="{x:.1f}" y1="{T}" x2="{x:.1f}" y2="{base:.1f}" stroke="#30363d" stroke-width="1" opacity="0.55"/>')
-                  out.append(f'<text x="{x+3:.1f}" y="{H-36}" fill="#f0f6fc" font-size="11" font-weight="700">{dt.strftime("%b %Y")}</text>')
+                  # Skip a partial first month so the axis never shows overlapping labels.
+                  if i != 0 or dt.day <= 7:
+                      out.append(f'<line x1="{x:.1f}" y1="{T}" x2="{x:.1f}" y2="{base:.1f}" stroke="#30363d" stroke-width="1" opacity="0.55"/>')
+                      out.append(f'<text x="{x+3:.1f}" y="{H-36}" fill="#f0f6fc" font-size="11" font-weight="700">{dt.strftime("%b %Y")}</text>')
                   prev=key
 
           for i,d in enumerate(days):
@@ -100,6 +102,8 @@ jobs:
           by_date={date.fromisoformat(d["date"]):d["contributionCount"] for d in days}
           latest=max((d for d in by_date if by_date[d]>0),default=None)
           today=datetime.now(timezone.utc).date()
+          print("Last 7 contribution days:", [(d["date"], d["contributionCount"]) for d in days[-7:]])
+          print("UTC today:", today, "latest active day:", latest)
           current=0
           if latest is not None and (today-latest).days<=1:
               cur=latest
