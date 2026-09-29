@@ -136,9 +136,11 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          temp_dir="$(mktemp -d)"
+          cp -a activity-dist/. "$temp_dir"/
           git switch --orphan activity-assets
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          cp -a activity-dist/. .
+          cp -a "$temp_dir"/. .
           git add -A
           git commit -m "chore: refresh activity charts"
           git push --force origin activity-assets
