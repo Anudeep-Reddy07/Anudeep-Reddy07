@@ -16,135 +16,190 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate charts
+      - name: Generate contribution heatmap and interactive report
         env:
           GH_TOKEN: ${{ github.token }}
           USERNAME: ${{ github.repository_owner }}
         run: |
           python - <<'PY'
           import json, os, urllib.request
-          from datetime import date, datetime, timedelta, timezone
+          from datetime import datetime
 
-          q="""query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount}}}}}}"""
-          body=json.dumps({"query":q,"variables":{"login":os.environ["USERNAME"]}}).encode()
-          req=urllib.request.Request("https://api.github.com/graphql",data=body,headers={
-              "Authorization":"Bearer "+os.environ["GH_TOKEN"],
-              "Content-Type":"application/json","User-Agent":"github-actions"})
-          with urllib.request.urlopen(req) as r: data=json.load(r)
-          if data.get("errors"): raise RuntimeError(data["errors"])
+          query = """query($login:String!){
+            user(login:$login){
+              contributionsCollection{
+                contributionCalendar{
+                  totalContributions
+                  weeks{
+                    contributionDays{date contributionCount}
+                  }
+                }
+              }
+            }
+          }"""
+
+          body=json.dumps({"query":query,"variables":{"login":os.environ["USERNAME"]}}).encode()
+          req=urllib.request.Request(
+              "https://api.github.com/graphql",
+              data=body,
+              headers={
+                  "Authorization":"Bearer "+os.environ["GH_TOKEN"],
+                  "Content-Type":"application/json",
+                  "User-Agent":"github-actions"
+              }
+          )
+          with urllib.request.urlopen(req) as r:
+              data=json.load(r)
+          if data.get("errors"):
+              raise RuntimeError(data["errors"])
 
           cal=data["data"]["user"]["contributionsCollection"]["contributionCalendar"]
-          days=[d for w in cal["weeks"] for d in w["contributionDays"]][-365:]
-          counts=[d["contributionCount"] for d in days]
-          max_count=max(counts or [1])
+          weeks=cal["weeks"]
+          days=[d for w in weeks for d in w["contributionDays"]][-365:]
           total=cal["totalContributions"]
-          active=sum(x>0 for x in counts)
+          active=sum(d["contributionCount"]>0 for d in days)
+          peak=max(days,key=lambda d:d["contributionCount"],default={"date":"","contributionCount":0})
+          max_count=max((d["contributionCount"] for d in days),default=1)
 
-          W,H=1160,350
-          L,R,T,B=82,28,76,58
-          PW,PH=W-L-R,H-T-B
-          slot=PW/len(days)
-          bar=max(1.5,slot*0.68)
-          base=T+PH
+          os.makedirs("activity-dist",exist_ok=True)
+
+          # GitHub-style 53-week x 7-day heatmap.
+          W,H=1160,250
+          left,top=58,50
+          cell,gap=14,4
+          step=cell+gap
+          plot_w=53*step-gap
+          plot_h=7*step-gap
+          colors=["#161b22","#0e4429","#006d32","#26a641","#39d353"]
+
+          def level(n):
+              if n<=0: return 0
+              if max_count<=1: return 4
+              ratio=n/max_count
+              return 1 if ratio<=.25 else 2 if ratio<=.50 else 3 if ratio<=.75 else 4
 
           def esc(s):
-              return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;")
+              return str(s).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;")
 
-          out=[
+          # Pad the 365-day sequence to complete Sunday->Saturday columns.
+          first=datetime.strptime(days[0]["date"],"%Y-%m-%d").date()
+          last=datetime.strptime(days[-1]["date"],"%Y-%m-%d").date()
+          start_offset=(first.weekday()+1)%7
+          padded=[None]*start_offset+days
+          while len(padded)%7: padded.append(None)
+          week_count=len(padded)//7
+
+          svg=[
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">',
-            '<title id="t">GitHub daily contribution activity</title>',
-            f'<desc id="d">{total} contributions across {active} active days from {days[0]["date"]} to {days[-1]["date"]}.</desc>',
+            '<title id="t">GitHub contribution activity heatmap</title>',
+            f'<desc id="d">{total} contributions across {active} active days from {first} to {last}.</desc>',
             f'<rect width="{W}" height="{H}" rx="18" fill="#0d1117"/>',
             '<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">',
-            '<text x="82" y="31" fill="#f0f6fc" font-size="21" font-weight="700">Daily activity</text>',
-            f'<text x="82" y="53" fill="#8b949e" font-size="12">@{esc(os.environ["USERNAME"])} · {days[0]["date"]} → {days[-1]["date"]} · {total} contributions</text>'
+            '<text x="58" y="27" fill="#f0f6fc" font-size="20" font-weight="700">Contribution activity</text>',
+            f'<text x="58" y="44" fill="#8b949e" font-size="11">@{esc(os.environ["USERNAME"])} · {first} → {last} · {total} contributions · {active} active days</text>'
           ]
 
-          for frac,label in ((0,max_count),(0.5,max_count//2),(1,0)):
-              y=T+PH*frac
-              out.append(f'<line x1="{L}" y1="{y:.1f}" x2="{W-R}" y2="{y:.1f}" stroke="#21262d" stroke-width="1"/>')
-              out.append(f'<text x="{L-12}" y="{y+4:.1f}" fill="#8b949e" font-size="11" text-anchor="end">{label}</text>')
+          weekdays=[("Sun",0),("Mon",1),("Tue",2),("Wed",3),("Thu",4),("Fri",5),("Sat",6)]
+          for label,row in weekdays:
+              if row in (1,3,5):
+                  svg.append(f'<text x="46" y="{top+row*step+10}" fill="#8b949e" font-size="9" text-anchor="end">{label}</text>')
 
-          # Month boundaries and labels.
-          prev=None
-          for i,d in enumerate(days):
-              dt=datetime.strptime(d["date"],"%Y-%m-%d")
-              key=(dt.year,dt.month)
-              x=L+i*slot
-              if key!=prev:
-                  # Skip a partial first month so the axis never shows overlapping labels.
-                  if i != 0 or dt.day <= 7:
-                      out.append(f'<line x1="{x:.1f}" y1="{T}" x2="{x:.1f}" y2="{base:.1f}" stroke="#30363d" stroke-width="1" opacity="0.55"/>')
-                      out.append(f'<text x="{x+3:.1f}" y="{H-36}" fill="#f0f6fc" font-size="11" font-weight="700">{dt.strftime("%b %Y")}</text>')
-                  prev=key
+          month_seen=set()
+          for i in range(week_count):
+              col_start=padded[i*7]
+              real=None
+              for row in range(7):
+                  d=padded[i*7+row]
+                  if d:
+                      real=d
+                      break
+              if real:
+                  dt=datetime.strptime(real["date"],"%Y-%m-%d")
+                  key=(dt.year,dt.month)
+                  if key not in month_seen and (i==0 or dt.day<=7):
+                      month_seen.add(key)
+                      x=left+i*step
+                      svg.append(f'<text x="{x}" y="{top-10}" fill="#f0f6fc" font-size="10" font-weight="600">{dt.strftime("%b")}</text>')
 
-          for i,d in enumerate(days):
-              n=d["contributionCount"]
-              if n:
-                  x=L+i*slot+(slot-bar)/2
-                  h=max(2,n/max_count*PH)
-                  y=base-h
-                  op=0.35+0.65*n/max_count
-                  out.append(f'<rect x="{x:.2f}" y="{y:.2f}" width="{bar:.2f}" height="{h:.2f}" fill="#39d353" opacity="{op:.2f}"/>')
+          for i in range(week_count):
+              for row in range(7):
+                  d=padded[i*7+row]
+                  if not d:
+                      continue
+                  n=d["contributionCount"]
+                  x=left+i*step
+                  y=top+row*step
+                  label=f'{datetime.strptime(d["date"],"%Y-%m-%d").strftime("%d %b %Y")} · {n} contribution{"s" if n!=1 else ""}'
+                  svg.append(
+                      f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" fill="{colors[level(n)]}" '
+                      f'aria-label="{esc(label)}"><title>{esc(label)}</title></rect>'
+                  )
 
-          # Date ticks every 14 days, with the final date always shown.
-          for i in list(range(0,len(days),14))+[len(days)-1]:
-              if i>=len(days): continue
-              dt=datetime.strptime(days[i]["date"],"%Y-%m-%d")
-              x=L+i*slot+slot/2
-              out.append(f'<line x1="{x:.1f}" y1="{base}" x2="{x:.1f}" y2="{base+5}" stroke="#8b949e" stroke-width="1"/>')
-              out.append(f'<text x="{x:.1f}" y="{H-13}" fill="#8b949e" font-size="10" text-anchor="middle">{dt.strftime("%d %b")}</text>')
+          legend_x=left+plot_w-170
+          legend_y=top+plot_h+25
+          svg.append(f'<text x="{legend_x-32}" y="{legend_y+10}" fill="#8b949e" font-size="10">Less</text>')
+          for i,cx in enumerate(colors):
+              svg.append(f'<rect x="{legend_x+i*18}" y="{legend_y}" width="12" height="12" rx="2" fill="{cx}"/>')
+          svg.append(f'<text x="{legend_x+5*18+4}" y="{legend_y+10}" fill="#8b949e" font-size="10">More</text>')
+          svg.append(f'<text x="{58+plot_w+12}" y="{legend_y+10}" fill="#8b949e" font-size="10">Peak: {peak["date"]} · {peak["contributionCount"]}</text>')
+          svg.append("</g></svg>")
+          open("activity-dist/activity-365d.svg","w",encoding="utf-8").write("\n".join(svg))
 
-          out.append('</g></svg>')
-          os.makedirs("activity-dist",exist_ok=True)
-          open("activity-dist/activity-365d.svg","w").write("\n".join(out))
-
-          by_date={date.fromisoformat(d["date"]):d["contributionCount"] for d in days}
-          latest=max((d for d in by_date if by_date[d]>0),default=None)
-          today=datetime.now(timezone.utc).date()
-          print("Last 7 contribution days:", [(d["date"], d["contributionCount"]) for d in days[-7:]])
-          print("UTC today:", today, "latest active day:", latest)
-          current=0
-          if latest is not None and (today-latest).days<=1:
-              cur=latest
-              while by_date.get(cur,0)>0:
-                  current+=1
-                  cur-=timedelta(days=1)
-
-          longest=run=0
-          for d in days:
-              if d["contributionCount"]>0:
-                  run+=1; longest=max(longest,run)
-              else: run=0
-
-          streak=f'''<svg xmlns="http://www.w3.org/2000/svg" width="760" height="190" viewBox="0 0 760 190" role="img" aria-labelledby="st sd">
-          <title id="st">GitHub contribution streak</title>
-          <desc id="sd">Current streak {current} days. Longest streak {longest} days.</desc>
-          <rect width="760" height="190" rx="18" fill="#0d1117"/>
-          <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
-          <text x="36" y="38" fill="#f0f6fc" font-size="18" font-weight="700">Contribution streak</text>
-          <text x="36" y="62" fill="#8b949e" font-size="12">@{esc(os.environ["USERNAME"])} · GitHub contribution calendar</text>
-          <text x="44" y="126" fill="#39d353" font-size="46" font-weight="800">{current}</text>
-          <text x="132" y="116" fill="#f0f6fc" font-size="15" font-weight="700">current streak</text>
-          <text x="132" y="138" fill="#8b949e" font-size="12">consecutive active days</text>
-          <line x1="378" y1="82" x2="378" y2="154" stroke="#30363d"/>
-          <text x="420" y="126" fill="#f0f6fc" font-size="34" font-weight="800">{longest}</text>
-          <text x="486" y="116" fill="#f0f6fc" font-size="15" font-weight="700">longest</text>
-          <text x="486" y="138" fill="#8b949e" font-size="12">in the displayed year</text>
-          </g></svg>'''
-          open("activity-dist/streak.svg","w").write(streak)
+          # Interactive HTML: yearly heatmap + last-30-days bar chart with real hover tooltips.
+          data_json=json.dumps(days,separators=(",",":"))
+          html=f'''<!doctype html>
+          <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>GitHub Activity · {esc(os.environ["USERNAME"])}</title>
+          <style>
+          :root{{--bg:#0d1117;--panel:#111820;--text:#f0f6fc;--muted:#8b949e;--line:#30363d;--green:#39d353}}
+          *{{box-sizing:border-box}} body{{margin:0;background:var(--bg);color:var(--text);font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:32px}}
+          main{{max-width:1180px;margin:auto}} h1{{font-size:28px;margin:0 0 6px}} .muted{{color:var(--muted)}} .panel{{border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:22px;overflow:auto}}
+          .grid{{display:grid;grid-template-columns:repeat(53,14px);grid-auto-rows:14px;gap:4px;margin-top:28px;min-width:960px}}
+          .cell{{width:14px;height:14px;border-radius:3px;background:#161b22;position:relative;cursor:crosshair}}
+          .cell:hover{{outline:1px solid #f0f6fc;outline-offset:2px}} .tooltip{{position:fixed;pointer-events:none;background:#161b22;border:1px solid #30363d;padding:8px 10px;border-radius:7px;font-size:12px;display:none;z-index:5;box-shadow:0 8px 24px #0008}}
+          .bars{{display:flex;align-items:flex-end;height:260px;gap:3px;min-width:900px;border-bottom:1px solid var(--line);padding:0 4px}}
+          .bar{{flex:1;min-width:2px;background:var(--green);opacity:.75;cursor:crosshair;border-radius:2px 2px 0 0}} .bar:hover{{opacity:1;outline:1px solid #f0f6fc}}
+          .months{{display:flex;justify-content:space-between;margin-top:10px;color:var(--muted);min-width:900px}}
+          @media(max-width:700px){{body{{padding:18px}}.panel{{padding:16px}}}}
+          </style></head><body><main>
+          <h1>GitHub contribution activity</h1>
+          <div class="muted">@{esc(os.environ["USERNAME"])} · {first} → {last} · {total} contributions · {active} active days</div>
+          <section class="panel"><strong>Last 12 months</strong><div id="heatmap" class="grid"></div></section>
+          <section class="panel"><strong>Daily activity · last 30 days</strong><div id="bars" class="bars"></div><div class="months"><span>{days[-30]["date"]}</span><span>{days[-1]["date"]}</span></div></section>
+          <div id="tip" class="tooltip"></div></main>
+          <script>
+          const days={data_json};
+          const max=Math.max(...days.map(d=>d.contributionCount),1);
+          const tip=document.getElementById('tip');
+          const fmt=d=>{{const n=d.contributionCount;return new Date(d.date+'T00:00:00Z').toLocaleDateString(undefined,{{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'}})+' · '+n+' contribution'+(n===1?'':'s')}};
+          const show=(e,d)=>{{tip.textContent=fmt(d);tip.style.display='block';tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px'}};
+          const hide=()=>tip.style.display='none';
+          const hm=document.getElementById('heatmap');
+          const firstDay=new Date(days[0].date+'T00:00:00Z').getUTCDay();
+          for(let i=0;i<firstDay;i++){{const s=document.createElement('span');s.className='cell';s.style.visibility='hidden';hm.appendChild(s)}}
+          days.forEach(d=>{{const c=document.createElement('span');c.className='cell';const r=d.contributionCount/max;c.style.background=d.contributionCount===0?'#161b22':r<=.25?'#0e4429':r<=.5?'#006d32':r<=.75?'#26a641':'#39d353';c.addEventListener('mousemove',e=>show(e,d));c.addEventListener('mouseleave',hide);hm.appendChild(c)}});
+          days.slice(-30).forEach(d=>{{const b=document.createElement('div');b.className='bar';b.style.height=Math.max(2,(d.contributionCount/max)*100)+'%';b.addEventListener('mousemove',e=>show(e,d));b.addEventListener('mouseleave',hide);document.getElementById('bars').appendChild(b)}});
+          </script></body></html>'''
+          open("activity-dist/index.html","w",encoding="utf-8").write(html)
           PY
 
-      - name: Publish
+      - name: Generate streak card
+        uses: zients/github-readme-streak-stats@v2
+        with:
+          options: user=${{ github.repository_owner }}&theme=dark&hide_border=true&background=0d1117&border=30363d&ring=39d353&fire=39d353&currStreakNum=f0f6fc&sideNums=f0f6fc&currStreakLabel=8b949e&sideLabels=8b949e&dates=8b949e&disable_animations=true&card_width=760&card_height=190&date_format=j M Y
+          path: activity-dist/streak.svg
+          token: ${{ github.token }}
+
+      - name: Publish generated assets
         run: |
           set -e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           temp_dir="$(mktemp -d)"
           cp -a activity-dist/. "$temp_dir"/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch --orphan activity-assets
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           cp -a "$temp_dir"/. .
           git add -A
-          git commit -m "chore: refresh activity charts"
+          git commit -m "chore: refresh activity visualizations"
           git push --force origin activity-assets
