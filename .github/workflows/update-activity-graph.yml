@@ -17,17 +17,129 @@ jobs:
       - name: Checkout profile repository
         uses: actions/checkout@v4
 
-      - name: Generate contribution charts
-        uses: dturovskiy/deus-commit-chart@v1
-        with:
-          username: ${{ github.repository_owner }}
-          token: ${{ github.token }}
-          default-days: "365"
-          ranges: "365"
-          layout: spacious
-          output-dir: activity-dist
-          theme: github-compact
-          hide-border: "true"
+      - name: Generate daily activity bar graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+          USERNAME: ${{ github.repository_owner }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          from datetime import datetime, timezone
+
+          query = """
+          query($login: String!) {
+            user(login: $login) {
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                  weeks {
+                    contributionDays {
+                      date
+                      contributionCount
+                    }
+                  }
+                }
+              }
+            }
+          }
+          """
+
+          payload = json.dumps({
+              "query": query,
+              "variables": {"login": os.environ["USERNAME"]}
+          }).encode()
+
+          req = urllib.request.Request(
+              "https://api.github.com/graphql",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+                  "Content-Type": "application/json",
+                  "User-Agent": "github-actions"
+              },
+          )
+
+          with urllib.request.urlopen(req) as response:
+              data = json.load(response)
+
+          if data.get("errors"):
+              raise RuntimeError(data["errors"])
+
+          calendar = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+          days = [
+              day
+              for week in calendar["weeks"]
+              for day in week["contributionDays"]
+          ][-365:]
+
+          W, H = 1120, 320
+          left, right, top, bottom = 70, 30, 68, 42
+          plot_w = W - left - right
+          plot_h = H - top - bottom
+          max_count = max((d["contributionCount"] for d in days), default=1)
+          bar_w = max(1.2, (plot_w / len(days)) * 0.72)
+
+          def esc(s):
+              return (s.replace("&", "&amp;")
+                       .replace("<", "&lt;")
+                       .replace(">", "&gt;")
+                       .replace('"', "&quot;"))
+
+          start = days[0]["date"]
+          end = days[-1]["date"]
+          total = calendar["totalContributions"]
+          active = sum(1 for d in days if d["contributionCount"] > 0)
+          peak = max_count
+
+          parts = [
+              '<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="320" viewBox="0 0 1120 320" role="img" aria-labelledby="title desc">',
+              '<title id="title">GitHub daily contribution activity</title>',
+              f'<desc id="desc">{total} contributions across {active} active days. Daily contributions shown as thin bars.</desc>',
+              '<rect width="1120" height="320" rx="18" fill="#0d1117"/>',
+              '<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">',
+              '<text x="70" y="30" fill="#f0f6fc" font-size="20" font-weight="700">GitHub daily activity</text>',
+              f'<text x="70" y="52" fill="#8b949e" font-size="12">@{esc(os.environ["USERNAME"])} · {start} → {end} · 365 days · {total} contributions</text>',
+          ]
+
+          # Subtle horizontal guides, no trend line.
+          for fraction, label in ((0, str(peak)), (0.5, str(peak // 2)), (1, "0")):
+              y = top + plot_h * fraction
+              parts.append(f'<line x1="{left}" y1="{y:.1f}" x2="{W-right}" y2="{y:.1f}" stroke="#21262d" stroke-width="1" opacity="0.65"/>')
+              parts.append(f'<text x="{left-12}" y="{y+4:.1f}" fill="#8b949e" font-size="11" text-anchor="end">{label}</text>')
+
+          base_y = top + plot_h
+          for i, day in enumerate(days):
+              count = day["contributionCount"]
+              if count <= 0:
+                  continue
+              x = left + i * (plot_w / len(days)) + ((plot_w / len(days)) - bar_w) / 2
+              height = max(2, (count / max_count) * plot_h)
+              y = base_y - height
+              # Thin vertical bars: no ECG curve, no dots, no 7-day trend.
+              opacity = 0.35 + 0.65 * (count / max_count)
+              parts.append(
+                  f'<rect x="{x:.2f}" y="{y:.2f}" width="{bar_w:.2f}" height="{height:.2f}" '
+                  f'rx="0.8" fill="#39d353" opacity="{opacity:.2f}"/>'
+              )
+
+          # Month labels.
+          seen = set()
+          for i, day in enumerate(days):
+              dt = datetime.strptime(day["date"], "%Y-%m-%d")
+              key = (dt.year, dt.month)
+              if dt.day <= 7 and key not in seen:
+                  seen.add(key)
+                  x = left + i * (plot_w / len(days))
+                  parts.append(f'<text x="{x:.1f}" y="{H-12}" fill="#8b949e" font-size="11">{dt.strftime("%b")}</text>')
+
+          parts.append("</g></svg>")
+
+          os.makedirs("activity-dist", exist_ok=True)
+          with open("activity-dist/activity-365d.svg", "w", encoding="utf-8") as f:
+              f.write("\n".join(parts))
+          PY
 
       - name: Publish static chart
         env:
@@ -35,12 +147,12 @@ jobs:
         run: |
           set -euo pipefail
           temp_dir="$(mktemp -d)"
-          cp -a activity-dist/. "$temp_dir/"
+          cp -a activity-dist/. "$temp_dir"/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch --orphan "$TARGET_BRANCH"
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           cp -a "$temp_dir"/. .
           git add -A
-          git commit -m "chore: refresh activity graph"
+          git commit -m "chore: refresh daily activity graph"
           git push --force origin "$TARGET_BRANCH"
