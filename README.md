@@ -27,11 +27,11 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 ---
 
-## 📈 DAILY ACTIVITY
+## 📊 ACTIVITY
 
 <div align="center">
 
-<img src="./metrics.isocalendar.svg" alt="Isometric contribution calendar over the last year" width="100%">
+<img src="./monthly-bars.svg" alt="Contributions per month over the last year" width="100%">
 
 </div>
 
