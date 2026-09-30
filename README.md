@@ -31,7 +31,7 @@ My work sits around **Python, machine learning, computer vision, backend systems
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/activity-assets/activity-365d.svg" alt="GitHub contribution activity over the last year" width="100%">
+<img src="./metrics.isocalendar.svg" alt="Isometric contribution calendar over the last year" width="100%">
 
 </div>
 
@@ -150,9 +150,9 @@ Machine-learning project focused on predicting house prices from structured data
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Anudeep-Reddy07&theme=github_dark" height="180" alt="GitHub statistics">
+<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/stats-assets/profile-summary-card-output/github_dark/3-stats.svg" height="180" alt="GitHub statistics">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Anudeep-Reddy07&theme=github_dark" height="180" alt="Top languages">
+<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/stats-assets/profile-summary-card-output/github_dark/1-repos-per-language.svg" height="180" alt="Top languages">
 
 </div>
 
