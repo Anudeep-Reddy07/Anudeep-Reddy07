@@ -150,9 +150,9 @@ Machine-learning project focused on predicting house prices from structured data
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/stats-assets/profile-summary-card-output/github_dark/3-stats.svg" height="180" alt="GitHub statistics">
+<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/main/profile-summary-card-output/github_dark/3-stats.svg" height="180" alt="GitHub statistics">
 
-<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/stats-assets/profile-summary-card-output/github_dark/1-repos-per-language.svg" height="180" alt="Top languages">
+<img src="https://raw.githubusercontent.com/Anudeep-Reddy07/Anudeep-Reddy07/main/profile-summary-card-output/github_dark/1-repos-per-language.svg" height="180" alt="Top languages">
 
 </div>
 
